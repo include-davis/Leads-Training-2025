@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import styles from './page.module.scss';
 
 const days = [
-  { day: 1, title: 'Task 1', description: 'Add task description here.', url: '/#' },
+  { day: 1, title: 'Task 1', description: 'Add task description here.', url: '/task_example' },
   { day: 2, title: 'Task 2', description: 'Add task description here.', url: '/#' },
   { day: 3, title: 'Task 3', description: 'Add task description here.', url: '/#' },
   { day: 4, title: 'Task 4', description: 'Add task description here.', url: '/#' },
@@ -23,11 +24,11 @@ export default function Home() {
         <div className={styles.grid}>
           {days.map((item, idx) => (
             <div key={idx} className={styles.card}>
-              <a href={item.url} className={styles.link}>
+              <Link href={item.url} className={styles.link}>
                 <div className={styles.day}>Day {item.day}</div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
