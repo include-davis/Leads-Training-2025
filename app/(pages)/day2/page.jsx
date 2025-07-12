@@ -54,10 +54,10 @@ export default function Home() {
   return (
     <main>
       <section className={theme === 'light' ? styles.darkBg : styles.lightBg}>
-        <button onClick={toggleTheme} className={styles.switchTheme}>
-          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        <button onClick={toggleTheme} className={theme === 'light' ? styles.darkTheme : styles.lightTheme}>
+          {theme === 'light' ? 'Light' : 'Dark'} Mode
         </button>
-        <h1 onClick={toggleTheme} className={theme === 'light' ? styles.darkText : styles.lightText}>Carousel</h1>
+        <h1 className={theme === 'light' ? styles.darkText : styles.lightText}>Carousel</h1>
 
         
         <div className={styles.carousel}>
