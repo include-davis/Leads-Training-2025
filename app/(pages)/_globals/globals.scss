@@ -14,6 +14,23 @@
   --navbar-height: 80px;
 }
 
+:root[data-theme='light'] {
+  --background: #ffffff;
+  --text-primary: #4a5566;
+  --text-title: var(--primary);
+}
+
+:root[data-theme='dark'] {
+  --background: #121212;
+  --text-primary: #f0f6ff;
+  --text-title: var(--secondary);
+}
+
+body {
+  background-color: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
