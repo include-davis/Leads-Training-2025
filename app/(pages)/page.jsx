@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './page.module.scss';
 
+
 const days = [
   { day: 1, title: 'Task 1', description: 'Add task description here.', url: '/task_example' },
   { day: 2, title: 'Task 2', description: 'Add task description here.', url: '/#' },
