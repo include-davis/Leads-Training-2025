@@ -1,7 +1,7 @@
 'use client';
 import styles from './task_2.module.scss';
 // import ThemeSwitcher from '../../components/ThemeSwitcher/ThemeSwitcher';
-// import Carousel from '../../components/Carousel/Carousel'; // (optional placeholder)
+import Carousel from '../_components/Carousel/Carousel';
 
 export default function Task_2() {
   return (
@@ -13,7 +13,7 @@ export default function Task_2() {
 
       <section className={styles.carouselSection}>
         {/* Placeholder for carousel */}
-        {/* <Carousel /> */}
+        <Carousel />
       </section>
     </main>
   );
