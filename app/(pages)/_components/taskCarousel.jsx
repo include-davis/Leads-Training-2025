@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import React from 'react';
 import TaskCard from './taskCard';
 import styles from './taskCarousel.module.scss';
+import CircleIcon from './circles';
 
 export default function TaskCarousel() {
     const data = ["1", "2", "3", "4", "5"];
@@ -52,34 +53,42 @@ export default function TaskCarousel() {
     }, []);
 
     return (
-      <div className={styles.carousel} style={{ width: '90%', margin: '0 auto', position: 'relative', height: '320px' }}>
-        <button className={styles.prevButton} onClick={handlePrev} disabled={isAnimating}>{'<'}</button>
-        <div className={styles.inner} style={{ position: 'relative', width: '100%', height: '320px' }}>
-          {cardOrder.map((idx, i) => (
-            <div
-              key={idx}
-              className={
-                styles.cardWrapper + ' ' +
-                styles[cardRoles[i]] +
-                (isAnimating && direction === 'left' && cardRoles[i] === 'left' ? ' ' + styles.animatingLeft : '') +
-                (isAnimating && direction === 'right' && cardRoles[i] === 'right' ? ' ' + styles.animatingRight : '')
-              }
-            >
-              <TaskCard
-                props={{
-                  id: idx,
-                  title: `Task ${parseInt(data[idx])}`,
-                  description: `Task ${parseInt(data[idx])} description`,
-                  url: '/task_example',
-                  hidden: false,
-                  small: cardRoles[i] !== 'center',
-                  center: cardRoles[i] === 'center'
-                }}
-              />
-            </div>
+      <>
+        <div className={styles.carousel} style={{ width: '90%', margin: '0 auto', position: 'relative', height: '320px' }}>
+          <button className={styles.prevButton} onClick={handlePrev} disabled={isAnimating}>{'<'}</button>
+          <div className={styles.inner} style={{ position: 'relative', width: '100%', height: '320px' }}>
+            {cardOrder.map((idx, i) => (
+              <div
+                key={idx}
+                className={
+                  styles.cardWrapper + ' ' +
+                  styles[cardRoles[i]] +
+                  (isAnimating && direction === 'left' && cardRoles[i] === 'left' ? ' ' + styles.animatingLeft : '') +
+                  (isAnimating && direction === 'right' && cardRoles[i] === 'right' ? ' ' + styles.animatingRight : '')
+                }
+              >
+                <TaskCard
+                  props={{
+                    id: idx,
+                    title: `Task ${parseInt(data[idx])}`,
+                    description: `Task ${parseInt(data[idx])} description`,
+                    url: '/task_example',
+                    hidden: false,
+                    small: cardRoles[i] !== 'center',
+                    center: cardRoles[i] === 'center'
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+          <button className={styles.nextButton} onClick={handleNext} disabled={isAnimating}>{'>'}</button>
+        </div>
+        {/* Circle indicators below carousel */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 16 }}>
+          {data.map((_, i) => (
+            <CircleIcon key={i} filled={i === currentIndex || i === leftIndex || i === rightIndex} size={20} color={i === currentIndex || i === leftIndex || i === rightIndex ? '#333' : '#bbb'} />
           ))}
         </div>
-        <button className={styles.nextButton} onClick={handleNext} disabled={isAnimating}>{'>'}</button>
-      </div>
+      </>
     );
 }
