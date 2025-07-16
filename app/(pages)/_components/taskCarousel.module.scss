@@ -4,3 +4,8 @@
     gap: 20px;
     justify-content: center;
 }
+
+.carousel.animating {
+  transition: transform 0.5s;
+  // or any animation you want
+}
