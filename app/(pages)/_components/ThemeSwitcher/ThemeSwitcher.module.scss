@@ -1,0 +1,22 @@
+.toggle {
+  display: flex;
+  margin-left: auto;
+  width: 140px;
+  height: 70px;
+  border-radius: 45%; 
+  background: var(--primary-light);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.half {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.5s ease;
+}
+
+.active {
+  background-color: #DFDFDF;
+}

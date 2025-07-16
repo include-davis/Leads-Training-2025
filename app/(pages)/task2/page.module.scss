@@ -1,4 +1,35 @@
 .container {
-	padding: 56px 100px;
-	background-color: #F7F6F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 100px;
+
+  h1 {
+    margin-top: 16px;
+  }
+}
+
+.heading {
+  font-size: 2.5rem;
+  transition: color 0.3s ease;
+}
+
+:global(body.light) {
+  .container {
+    background-color: #fdfdfd;
+  }
+  
+  .heading {
+    color: #111;
+  }
+}
+
+:global(body.dark) {
+  .container {
+    background-color: #121212;
+  }
+  
+  .heading {
+    color: #f9f9f9;
+  }
 }
