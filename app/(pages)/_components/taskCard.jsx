@@ -5,10 +5,9 @@ export default function TaskCard({ props }) {
     const { id, title, description, url, hidden, small, center } = props;
 
     if (!small && !center) {
-        return null; // Don't render anything if hidden
+        return null; // Don't render anything if not small or center
     } 
     
-
     return (
         <div className={`${styles.card} ${small ? styles.smallCard : ''}`}>
             <h3>{title}</h3>

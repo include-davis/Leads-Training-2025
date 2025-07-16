@@ -3,9 +3,48 @@
     flex-direction: row;
     gap: 20px;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 }
 
 .carousel.animating {
   transition: transform 0.5s;
   // or any animation you want
 }
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; // optional, centers the cards in the container
+  align-items: stretch;    // optional, makes cards the same height
+  gap: 20px;       
+  transition: 0.5s ease-in-out;        // optional, space between cards
+}
+
+.card {
+    flex: 0 0 100%; /* Ensure each card takes up full width */
+    transition: transform 0.5s ease-in-out; /* Apply transition to each card */     // or whatever width you want
+  
+}
+
+.prevButton, .nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .prevButton {
+    left: 10px;
+  }
+  .nextButton {
+    right: 10px;
+  }
+  
+
+  
+.smallCard {
+    opacity: 0.5; /* Optional: make small cards slightly faded */
+    transform: scale(0.8); /* Optional: scale down small cards */
+  }
