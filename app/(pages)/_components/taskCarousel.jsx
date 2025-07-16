@@ -1,53 +1,94 @@
+'use client';
 import TaskCard from './taskCard';
 import styles from './taskCarousel.module.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-function rotateCards(props) {
-    if (center){
-        return (
-            styles.smallCard
-        )
-    }
-}
-
-
-
-
-
 export default function TaskCarousel({ }) {
 
     const data = ["1", "2", "3", "4", "5"];
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isCenter, setIsCenter] = useState(false);
 
-    const carouselInfiniteScroll = () =>{
-        if (currentIndex === data.length - 1){
-            return setCurrentIndex(0);
-        }
-        return setCurrentIndex(currentIndex + 1);
-    }
 
-    useEffect(()=> {
-        const interval = setInterval(() => {carouselInfiniteScroll()}, 3000)
-        return () => clearInterval(interval);
-    })
+    const handlePrev = () => {
+        setCurrentIndex(currentIndex === 0 ? data.length - 1 : currentIndex - 1);
+    };
 
-    
+    const handleNext = () => {
+        setCurrentIndex(currentIndex === data.length - 1 ? 0 : currentIndex + 1);
+    };
+
     return (
         <div className={styles.carousel}>
             <button
                 className={styles.prevButton}
-                onClick={() => {
-                    console.log('Prev');
-
-                }}
+                onClick={handlePrev}
             >Prev</button>
-            <TaskCard props={{ id: 1, title: 'Task 1', description: 'Task 1 description', url: '/task_example', hidden: true, small: true, center: false }} />
-            <TaskCard props={{ id: 2, title: 'Task 2', description: 'Task 2 description', url: '/task_example', hidden: false, small: true, center: false }} />
-            <TaskCard props={{ id: 3, title: 'Task 3', description: 'Task 3 description', url: '/task_example', hidden: false, small: false, center:true }} />
-            <TaskCard props={{ id: 4, title: 'Task 4', description: 'Task 4 description', url: '/task_example', hidden: false, small: true, center: false }} />
-            <TaskCard props={{ id: 5, title: 'Task 5', description: 'Task 5 description', url: '/task_example', hidden: true, small: true, center: false}} />
-            <button>Next</button>
+            <TaskCard 
+                props={{ 
+                    id: 1, 
+                    title: 'Task 1', 
+                    description: 'Task 1 description', 
+                    url: '/task_example', 
+                    hidden: false, 
+                    small: currentIndex !== 0, 
+                    center: currentIndex === 0 
+                }}
+                style={{transform: `translateX(-${currentIndex * 100}%)`}}
+            />
+            <TaskCard 
+                props={{ 
+                    id: 2, 
+                    title: 'Task 2', 
+                    description: 'Task 2 description', 
+                    url: '/task_example', 
+                    hidden: false, 
+                    small: currentIndex !== 1, 
+                    center: currentIndex === 1 
+                }}
+                style={{transform: `translateX(-${currentIndex * 100}%)`}}
+            />
+            <TaskCard 
+                props={{ 
+                    id: 3, 
+                    title: 'Task 3', 
+                    description: 'Task 3 description', 
+                    url: '/task_example', 
+                    hidden: false, 
+                    small: currentIndex !== 2, 
+                    center: currentIndex === 2 
+                }}
+                style={{transform: `translateX(-${currentIndex * 100}%)`}}
+            />
+            <TaskCard 
+                props={{ 
+                    id: 4, 
+                    title: 'Task 4', 
+                    description: 'Task 4 description', 
+                    url: '/task_example', 
+                    hidden: false, 
+                    small: currentIndex !== 3, 
+                    center: currentIndex === 3 
+                }}
+                style={{transform: `translateX(-${currentIndex * 100}%)`}}
+            />
+            <TaskCard 
+                props={{ 
+                    id: 5, 
+                    title: 'Task 5', 
+                    description: 'Task 5 description', 
+                    url: '/task_example', 
+                    hidden: false, 
+                    small: currentIndex !== 4, 
+                    center: currentIndex === 4 
+                }}
+                style={{transform: `translateX(-${currentIndex * 100}%)`}}
+            />
+            <button
+                className={styles.nextButton}
+                onClick={handleNext}
+            >Next</button>
         </div>
     );
 }
