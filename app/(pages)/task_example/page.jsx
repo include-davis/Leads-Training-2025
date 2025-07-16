@@ -4,7 +4,7 @@ export default function Task() {
   return (
     <main>
       <div className={styles.container}>
-        <h1>Insert Task Here</h1>
+        <h1>Insert Task Here: Trying to make a color changing carousel</h1>
       </div>
     </main>
   );
