@@ -8,7 +8,6 @@ export default function CircleIcon({ filled = false, size = 24, color = '#333' }
         lineHeight: 1,
         verticalAlign: 'middle',
       }}
-      aria-label={filled ? 'Filled circle' : 'Empty circle'}
     >
       {filled ? '\u25CF' : '\u25CB'}
     </span>
