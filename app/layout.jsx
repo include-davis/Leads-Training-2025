@@ -1,7 +1,7 @@
 import './(pages)/_globals/globals.scss';
 import Header from './(pages)/_components/Header/Header';
 import Footer from './(pages)/_components/Footer/Footer';
-
+import { ThemeProvider } from './_context/ThemeContext';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,8 +12,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+       
         <Header />
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Footer />
       </body>
     </html>

@@ -1,0 +1,21 @@
+
+
+.carousel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.prevButton{
+    cursor: pointer;
+    filter: var(--image-filter)
+    
+}
+
+.nextButton{
+    transform: scaleX(-1);
+    cursor: pointer;
+    filter: var(--image-filter)
+    
+}

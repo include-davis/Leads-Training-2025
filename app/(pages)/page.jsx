@@ -3,7 +3,7 @@ import styles from './page.module.scss';
 
 const days = [
   { day: 1, title: 'Task 1', description: 'Add task description here.', url: '/task_example' },
-  { day: 2, title: 'Task 2', description: 'Add task description here.', url: '/#' },
+  { day: 2, title: 'Task 2', description: 'Add task description here.', url: '/task_2' },
   { day: 3, title: 'Task 3', description: 'Add task description here.', url: '/#' },
   { day: 4, title: 'Task 4', description: 'Add task description here.', url: '/#' },
   { day: 5, title: 'Task 5', description: 'Add task description here.', url: '/#' },
