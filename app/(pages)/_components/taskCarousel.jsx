@@ -52,7 +52,7 @@ export default function TaskCarousel() {
     }, []);
 
     return (
-      <div className={styles.carousel} style={{ width: '600px', margin: '0 auto', position: 'relative', height: '320px' }}>
+      <div className={styles.carousel} style={{ width: '90%', margin: '0 auto', position: 'relative', height: '320px' }}>
         <button className={styles.prevButton} onClick={handlePrev} disabled={isAnimating}>{'<'}</button>
         <div className={styles.inner} style={{ position: 'relative', width: '100%', height: '320px' }}>
           {cardOrder.map((idx, i) => (
