@@ -1,58 +1,85 @@
 'use client';
+import { useState, useRef } from 'react';
+import React from 'react';
 import TaskCard from './taskCard';
 import styles from './taskCarousel.module.scss';
-import { useState, useEffect } from 'react';
 
 export default function TaskCarousel() {
-  const data = ["1", "2", "3", "4", "5"];
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+    const data = ["1", "2", "3", "4", "5"];
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [direction, setDirection] = useState(null); // 'left' or 'right'
+    const animationTimeout = useRef(null);
+    const dataLength = data.length;
 
-  useEffect(() => {
-    setIsAnimating(true);
-    const timeout = setTimeout(() => setIsAnimating(false), 500); // Timing of animation
-    return () => clearTimeout(timeout);
-  }, [currentIndex]);
+    // Calculate indices for left, center, right
+    const leftIndex = (currentIndex - 1 + dataLength) % dataLength;
+    const centerIndex = currentIndex;
+    const rightIndex = (currentIndex + 1) % dataLength;
 
-  const handlePrev = () => {
-    setCurrentIndex(currentIndex === 0 ? data.length - 1 : currentIndex - 1);
-  };
+    // For animation, always render left, center, right
+    const cardOrder = [leftIndex, centerIndex, rightIndex];
+    const cardRoles = ['left', 'center', 'right'];
 
-  const handleNext = () => {
-    setCurrentIndex(currentIndex === data.length - 1 ? 0 : currentIndex + 1);
-  };
+    const handlePrev = () => {
+      if (isAnimating) return;
+      setDirection('right');
+      setIsAnimating(true);
+      if (animationTimeout.current) clearTimeout(animationTimeout.current);
+      animationTimeout.current = setTimeout(() => {
+        setCurrentIndex(leftIndex);
+        setIsAnimating(false);
+        setDirection(null);
+      }, 500);
+    };
 
-  const prevIndex = (currentIndex - 1 + data.length) % data.length;
-  const nextIndex = (currentIndex + 1) % data.length;
+    const handleNext = () => {
+      if (isAnimating) return;
+      setDirection('left');
+      setIsAnimating(true);
+      if (animationTimeout.current) clearTimeout(animationTimeout.current);
+      animationTimeout.current = setTimeout(() => {
+        setCurrentIndex(rightIndex);
+        setIsAnimating(false);
+        setDirection(null);
+      }, 500);
+    };
 
-  const visibleCards = [
-    { idx: prevIndex, type: 'small' },
-    { idx: currentIndex, type: 'center' },
-    { idx: nextIndex, type: 'small' }
-  ];
+    React.useEffect(() => {
+      return () => {
+        if (animationTimeout.current) clearTimeout(animationTimeout.current);
+      };
+    }, []);
 
-  return (
-    <div className={styles.carousel}>
-      <button className={styles.prevButton} onClick={handlePrev}>Prev</button>
-      <div className={styles.inner}>
-        {visibleCards.map(({ idx, type }, index) => (
-          <TaskCard
-            key={idx}
-            props={{
-              id: idx,
-              title: `Task ${parseInt(data[idx])}`,
-              description: `Task ${parseInt(data[idx])} description`,
-              url: '/task_example',
-              hidden: false,
-              small: type === 'small',
-              center: type === 'center',
-              isAnimating,
-              index
-            }}
-          />
-        ))}
+    return (
+      <div className={styles.carousel} style={{ width: '600px', margin: '0 auto', position: 'relative', height: '320px' }}>
+        <button className={styles.prevButton} onClick={handlePrev} disabled={isAnimating}>{'<'}</button>
+        <div className={styles.inner} style={{ position: 'relative', width: '100%', height: '320px' }}>
+          {cardOrder.map((idx, i) => (
+            <div
+              key={idx}
+              className={
+                styles.cardWrapper + ' ' +
+                styles[cardRoles[i]] +
+                (isAnimating && direction === 'left' && cardRoles[i] === 'left' ? ' ' + styles.animatingLeft : '') +
+                (isAnimating && direction === 'right' && cardRoles[i] === 'right' ? ' ' + styles.animatingRight : '')
+              }
+            >
+              <TaskCard
+                props={{
+                  id: idx,
+                  title: `Task ${parseInt(data[idx])}`,
+                  description: `Task ${parseInt(data[idx])} description`,
+                  url: '/task_example',
+                  hidden: false,
+                  small: cardRoles[i] !== 'center',
+                  center: cardRoles[i] === 'center'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        <button className={styles.nextButton} onClick={handleNext} disabled={isAnimating}>{'>'}</button>
       </div>
-      <button className={styles.nextButton} onClick={handleNext}>Next</button>
-    </div>
-  );
+    );
 }
