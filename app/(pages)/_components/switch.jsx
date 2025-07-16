@@ -1,19 +1,19 @@
 import React from 'react';
-import './Switch.css';
+import styles from './switch.module.scss';
 
 export default function Switch() {
   return (
     <>
       <input
-        className="react-switch-checkbox"
+        className={styles['react-switch-checkbox']}
         id={`react-switch-new`}
         type="checkbox"
       />
       <label
-        className="react-switch-label"
+        className={styles['react-switch-label']}
         htmlFor={`react-switch-new`}
       >
-        <span className={`react-switch-button`} />
+        <span className={styles['react-switch-button']} />
       </label>
     </>
   );
