@@ -26,12 +26,14 @@ function LightDarkSwitcher({theme, setTheme}) {
 export default function Task() {
   const[theme, setTheme] = useState('light');
 
-
   //click on themeButton to make the switcher visible
   const [isSwitcherVisible, setSwitcherVisible] = useState(false);
   const handleClick = () => {
     setSwitcherVisible(!isSwitcherVisible);
   }
+
+  const [currImage, setCurrImage] = useState(0);
+
 
   return (
     <main>
@@ -43,6 +45,28 @@ export default function Task() {
         </div>
         <h1>Task: Trying to make a color changing carousel</h1>
       </div>
+      <h1 style={{ justifyContent: 'center', display: 'flex' }}>Carousel</h1>
+      
+      <div className={styles.carousel}>
+        <button
+          className={styles.carouselButtonLeft}
+          onClick={() => setCurrImage((currImage - 1 + items.length)% items.length)}>
+            <img src="/images/left-arrow.png" alt="Left Arrow" />
+        </button>
+        <div className={styles.imageCarouselRow}>
+          {items.map((item, index) => (
+            {/*idenitfying the center image as .active*/}
+            <div key={item.id} className={index === currImage ? styles.active : styles.inactive}>
+              <img src={item.image} alt={item.alt} />
+            </div>
+          ))}
+        </div>
+        <button
+          className={styles.carouselButtonRight}
+          onClick={() => setCurrImage((currImage + 1)% items.length)}>
+            <img src="/images/right-arrow.png" alt="Right Arrow" />
+        </button>
+      </div> 
     </main>
   );
 }
