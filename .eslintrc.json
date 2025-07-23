@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["next/core-web-vitals"],
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
   "settings": {
     "react": { "version": "detect" }
   },

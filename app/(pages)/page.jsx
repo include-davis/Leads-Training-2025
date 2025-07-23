@@ -3,7 +3,7 @@ import styles from './page.module.scss';
 
 const days = [
   { day: 1, title: 'Task 1', description: 'Add task description here.', url: '/task_example' },
-  { day: 2, title: 'Task 2', description: 'Add task description here.', url: '/#' },
+  { day: 2, title: 'Task 2', description: 'Make an image carousel (button for left/right) with a theme switcher (night and day) to change background and text colors defined in globals.scss', url: '/#' },
   { day: 3, title: 'Task 3', description: 'Add task description here.', url: '/#' },
   { day: 4, title: 'Task 4', description: 'Add task description here.', url: '/#' },
   { day: 5, title: 'Task 5', description: 'Add task description here.', url: '/#' },

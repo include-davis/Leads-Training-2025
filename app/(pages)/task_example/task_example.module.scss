@@ -9,3 +9,40 @@
         color: white;
     }
 }
+
+.switcherContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.lightButton {
+    background-color: #fff;
+    color: #000;
+}
+.darkButton {
+    background-color: #000;
+    color: #fff; //color of the text
+}
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .themeButton {
+        background-color: #fff;
+        color: #c82323;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: #f0f0f0;
+            color: #9f3a3a;
+        }
+    }
+}
