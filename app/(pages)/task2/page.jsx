@@ -1,5 +1,7 @@
 import styles from './task2.module.scss';
 import Carousel from '../_components/Carousel/Carousel';
+import DarkModeToggle from '../_components/Theme/ThemeToggle/ThemeToggle'
+import ThemeProvider from '../_components/Theme/ThemeProvider/ThemeProvider';
 
 const images = [
   "/cute.png",
@@ -11,10 +13,11 @@ const images = [
 
 export default function Task() {
   return (
-    <main>
+    <ThemeProvider>
       <div className={styles.mainContainer}>
+        <DarkModeToggle/>
         <Carousel images={images}/>
       </div>
-    </main>
+    </ThemeProvider>
   );
 }
