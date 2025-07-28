@@ -1,0 +1,40 @@
+.title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.sliderContainer {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    color: black;
+
+    .leftArrow {
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+
+    .leftPanel {
+        background-color: white;
+        width: 16rem;
+        height: 9rem;
+    }
+
+    .middlePanel {
+        background-color: white;
+        width: 32rem;
+        height: 18rem;
+    }
+
+    .rightPanel {
+        background-color: white;
+        width: 16rem;
+        height: 9rem;
+    }
+
+    .rightArrow {
+        border-radius: 50%;
+        border: 1px solid white;
+    }
+}
