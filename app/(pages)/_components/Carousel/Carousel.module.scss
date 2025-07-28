@@ -30,3 +30,20 @@
         user-select: none;
     }
 }
+
+.dotContainer {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-top: 1rem;
+
+    .dot {
+        border-radius: 50%;
+        border: 1px solid white;
+        width: .75rem;
+        height: .75rem;
+    }
+    .dot.active {
+        background-color: white;
+    }
+}

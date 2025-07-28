@@ -49,7 +49,11 @@ export default function Carousel ({images}) {
                     <FaAngleRight size="5rem"/>
                 </div>
             </div>
-            <div>. . .</div>
+            <div className={styles.dotContainer}>
+                {images.map((_, index) => (
+                    <div key={index} className={`${styles.dot} ${index==left||index==main||index==right? styles.active : ""}`}/>
+                ))}
+            </div>
         </main>
     )
 }
