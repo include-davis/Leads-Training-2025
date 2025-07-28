@@ -1,7 +1,3 @@
-.panel {
-    overflow: hidden;
-}
-
 .title {
     font-size: 3rem;
     margin-bottom: 2rem;
@@ -12,41 +8,25 @@
     gap: 3rem;
     align-items: center;
     justify-content: center;
-    color: black;
 
-    .leftArrow {
+    .sideArrow {
         border-radius: 50%;
         border: 1px solid white;
         position: relative;
         z-index: 100;
     }
 
-    .leftPanel {
+    .smallPanel {
         background-color: white;
         width: 16rem;
         height: 16rem;
+        user-select: none;
     }
 
-    .middlePanel {
+    .bigPanel {
         background-color: white;
         width: 32rem;
         height: 32rem;
-    }
-    .imageList {
-        display: flex;
-        transition: transform 0.5s ease;
-    }
-
-    .rightPanel {
-        background-color: white;
-        width: 16rem;
-        height: 16rem;
-    }
-
-    .rightArrow {
-        border-radius: 50%;
-        border: 1px solid white;
-        position: relative;
-        z-index: 100;
+        user-select: none;
     }
 }
