@@ -1,3 +1,7 @@
+.panel {
+    overflow: hidden;
+}
+
 .title {
     font-size: 3rem;
     margin-bottom: 2rem;
@@ -13,28 +17,36 @@
     .leftArrow {
         border-radius: 50%;
         border: 1px solid white;
+        position: relative;
+        z-index: 100;
     }
 
     .leftPanel {
         background-color: white;
         width: 16rem;
-        height: 9rem;
+        height: 16rem;
     }
 
     .middlePanel {
         background-color: white;
         width: 32rem;
-        height: 18rem;
+        height: 32rem;
+    }
+    .imageList {
+        display: flex;
+        transition: transform 0.5s ease;
     }
 
     .rightPanel {
         background-color: white;
         width: 16rem;
-        height: 9rem;
+        height: 16rem;
     }
 
     .rightArrow {
         border-radius: 50%;
         border: 1px solid white;
+        position: relative;
+        z-index: 100;
     }
 }
