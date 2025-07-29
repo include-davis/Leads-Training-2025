@@ -1,4 +1,5 @@
 import blogPosts from "@/app/(data)/blog";
+import styles from "./blogPost.module.scss"
 
 export async function generateStaticParams() {
     return blogPosts.map(post => ({
@@ -10,7 +11,7 @@ export default async function BlogPost ({params}) {
     const resolvedParams = await params;
     const post = blogPosts.find(post => post.slug == resolvedParams.slug)
     return (
-        <main>
+        <main className={styles.mainContainer}>
             <h1>
                 {post.title}
             </h1>
