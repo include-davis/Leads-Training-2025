@@ -4,7 +4,7 @@ import styles from './page.module.scss';
 const days = [
   { day: 1, title: 'Task 1', description: 'Example Task', url: '/task_example' },
   { day: 2, title: 'Task 2', description: 'Carousel', url: '/task2' },
-  { day: 3, title: 'Task 3', description: 'Add task description here.', url: '/#' },
+  { day: 3, title: 'Task 3', description: 'Blogs', url: '/task3' },
   { day: 4, title: 'Task 4', description: 'Add task description here.', url: '/#' },
   { day: 5, title: 'Task 5', description: 'Add task description here.', url: '/#' },
 ];
