@@ -1,7 +1,9 @@
+"use client";
 import styles from './task2.module.scss';
 import Carousel from '../_components/Carousel/Carousel';
 import DarkModeToggle from '../_components/Theme/ThemeToggle/ThemeToggle'
-import ThemeProvider from '../_components/Theme/ThemeProvider/ThemeProvider';
+import ThemeProvider, { Theme } from '../_components/Theme/ThemeProvider/ThemeProvider';
+import { useContext } from 'react';
 
 const images = [
   "/cute.png",
@@ -11,13 +13,21 @@ const images = [
   "/tears.png"
 ]
 
+function TaskContents() {
+  const [isLight, updateTheme] = useContext(Theme);
+
+  return (
+    <div className={`${styles.mainContainer} ${!isLight ? styles.dark : ""}`}>
+      <DarkModeToggle />
+      <Carousel images={images} />
+    </div>
+  )
+}
+
 export default function Task() {
   return (
     <ThemeProvider>
-      <div className={styles.mainContainer}>
-        <DarkModeToggle/>
-        <Carousel images={images}/>
-      </div>
+      <TaskContents />
     </ThemeProvider>
   );
 }

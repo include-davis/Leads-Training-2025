@@ -2,7 +2,7 @@
 import styles from "./ThemeToggle.module.scss";
 import { CiSun, CiCloudMoon } from "react-icons/ci";
 import { useContext } from "react";
-import { Theme } from "../ThemeProvider/ThemeProvider"
+import { Theme } from "../ThemeProvider/ThemeProvider";
 
 function Toggle () {
     const [isLight, updateTheme] = useContext(Theme);
