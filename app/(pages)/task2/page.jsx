@@ -24,7 +24,7 @@ function TaskContents() {
   )
 }
 
-export default function Task() {
+export default function Task2() {
   return (
     <ThemeProvider>
       <TaskContents />

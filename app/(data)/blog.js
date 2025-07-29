@@ -15,3 +15,5 @@ const blogPosts = [
         content: "try out these 5 SUPER cool hacks"
     }
 ]
+
+export default blogPosts;
