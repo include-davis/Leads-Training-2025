@@ -1,4 +1,4 @@
-import blogPosts from "@/app/(data)/blog";
+import blogPosts from "@/data/blog";
 import styles from "./blogPost.module.scss"
 
 export async function generateStaticParams() {

@@ -1,5 +1,5 @@
 import styles from './task3.module.scss';
-import blogPosts from '@/app/(data)/blog';
+import blogPosts from '@/data/blog';
 import Link from 'next/link';
 
 export default function Task3() {
