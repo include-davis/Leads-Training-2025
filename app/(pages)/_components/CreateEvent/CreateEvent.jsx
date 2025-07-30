@@ -18,6 +18,11 @@ export default function ContactForm() {
             endTime: new Date(form.endTime).toISOString()
           };
 
+        if (isoedForm.startTime >= isoedForm.endTime) {
+            alert("End time must be ahead of start time")
+            return;
+        }
+
         const res = await fetch('/api/creategCalEvent', {
             method: 'POST',
             headers: {
